@@ -3,6 +3,8 @@
 """ Core utilities. """
 
 import json
+import os
+
 import spacy
 
 
@@ -12,6 +14,11 @@ class Dictionary:
     def __init__(self, metadata, words):
         self.metadata = metadata
         self.words = words
+
+    @classmethod
+    def load_by_name(cls, name):
+        return cls.load(os.path.join(
+            os.path.dirname(__file__), "dictionaries", name + ".json"))
 
     @classmethod
     def load(cls, path):
@@ -27,6 +34,11 @@ class Dictionary:
 
 def absolutist_index(text):
     nlp = spacy.load('en_core_web_sm')
+    d = Dictionary.load_by_name("absolute-19")
+    wordset = set(d.words)
     doc = nlp(text)
-    for entity in doc.ents:
-        print(entity.text, entity.label_)
+    score = 0
+    for token in doc:
+        if token.lemma_ in wordset:
+            score += 1
+    return score

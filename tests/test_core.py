@@ -8,5 +8,12 @@ from absolang.core import absolutist_index
 
 
 class AbsoluteIndexTests(TestCase):
-    def test_absolutist_index(self):
-        absolutist_index("My name is Simon.")
+
+    def check_index(self, text, value):
+        self.assertEqual(absolutist_index(text), value)
+
+    def test_no_absolutist_words(self):
+        self.check_index("The bigger dog is running.", 0)
+
+    def test_one_absolutist_word(self):
+        self.check_index("He was completely bowled over.", 1)
