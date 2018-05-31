@@ -3,6 +3,7 @@
 """ Core utilities. """
 
 import json
+import spacy
 
 
 class Dictionary:
@@ -22,3 +23,10 @@ class Dictionary:
             "metadata": self.metadata,
             "words": self.words,
         }, open(path, mode="w", encoding="utf-8"), indent=2)
+
+
+def absolutist_index(text):
+    nlp = spacy.load('en_core_web_sm')
+    doc = nlp(text)
+    for entity in doc.ents:
+        print(entity.text, entity.label_)
