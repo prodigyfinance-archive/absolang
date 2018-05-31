@@ -1,0 +1,7 @@
+include .gitignore
+include README.rst
+include setup.py
+include setup.cfg
+
+recursive-include absolang *.json
+recursive-include absolang *.py
