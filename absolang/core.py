@@ -37,8 +37,11 @@ def absolutist_index(text):
     d = Dictionary.load_by_name("absolute-19")
     wordset = set(d.words)
     doc = nlp(text)
+    words = 0
     score = 0
     for token in doc:
+        if not token.is_punct:
+            words += 1
         if token.lemma_ in wordset:
             score += 1
-    return score
+    return score / float(words)
