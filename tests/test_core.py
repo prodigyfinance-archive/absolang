@@ -4,10 +4,10 @@
 
 from unittest import TestCase
 
-from absolang.core import absolutist_index
+from absolang.core import absolutist_index, absolutist
 
 
-class AbsoluteIndexTests(TestCase):
+class AbsolutistIndexTests(TestCase):
 
     def check_index(self, text, value):
         self.assertEqual(absolutist_index(text), value)
@@ -26,3 +26,15 @@ class AbsoluteIndexTests(TestCase):
 
     def test_salutation_ignored(self):
         self.check_index("Hello everyone.", 0 / 2.)
+
+
+class AbsolutistTests(TestCase):
+
+    def check(self, text, value):
+        self.assertEqual(absolutist(text), value)
+
+    def test_less_than_one_percent(self):
+        self.check("The bigger dog is running.", False)
+
+    def test_more_than_one_percent(self):
+        self.check("He was completely bowled over.", True)
