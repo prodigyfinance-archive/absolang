@@ -47,8 +47,6 @@ Caveats
 References
 ----------
 
-* `In an Absolute State: Elevated Use of
-Absolutist Words Is a Marker Specific to
-Anxiety, Depression, and Suicidal Ideation <http://journals.sagepub.com/doi/pdf/10.1177/2167702617747074>`_
+* `In an Absolute State: Elevated Use of Absolutist Words Is a Marker Specific to Anxiety, Depression, and Suicidal Ideation <http://journals.sagepub.com/doi/pdf/10.1177/2167702617747074>`_
 
 * `FCA Occasional Paper No. 8: Consumer Vulnerability <https://www.fca.org.uk/publications/occasional-papers/occasional-paper-no-8-consumer-vulnerability>`_
