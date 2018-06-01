@@ -7,6 +7,8 @@ import os
 
 import spacy
 
+nlp = spacy.load('en_core_web_sm')
+
 
 class Dictionary:
     """ Dictionary of words. """
@@ -33,15 +35,21 @@ class Dictionary:
 
 
 def absolutist_index(text):
-    nlp = spacy.load('en_core_web_sm')
-    d = Dictionary.load_by_name("absolute-19")
-    wordset = set(d.words)
+    dictionary = Dictionary.load_by_name("absolute-19")
+    wordset = set(dictionary.words)
     doc = nlp(text)
     words = 0
     score = 0
+    prev = None
     for token in doc:
-        if not token.is_punct:
+        if token.is_alpha:
             words += 1
         if token.lemma_ in wordset:
-            score += 1
+            # ignore absolutist words if the previous word is a
+            # negation (e.g. "not"), an adverbial modifier (e.g. "almost"),
+            # or an interjection (e.g. "Hello everyone!")
+            if ((prev is None) or not (
+                    prev.dep_ in ("neg", "advmod", "intj"))):
+                score += 1
+        prev = token
     return score / float(words)
