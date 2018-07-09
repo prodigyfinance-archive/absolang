@@ -21,6 +21,7 @@ setup(
     },
     classifiers=[
         'Development Status :: 4 - Beta',
+        'License :: OSI Approved :: ISC License (ISCL)',
         'Operating System :: POSIX',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
