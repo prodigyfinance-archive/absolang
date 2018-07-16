@@ -4,7 +4,7 @@ setup(
     name="absolang",
     version="0.0.2",
     url='http://github.com/prodigyfinance/absolang',
-    license='Unknown',
+    license='ISCL',
     description=(
         "A sentiment analysis library for detecting absolutist language."
     ),
